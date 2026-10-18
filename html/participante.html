@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi agenda - Sistema de Gestión de Eventos Académicos</title>
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+
+
+<body>
+
+  <header>
+  
+    <div class="marca">
+      <span>Sistema de Eventos Académicos</span>
+    </div>
+
+    <nav aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html">Eventos</a></li>
+        <li><a href="login.html">Iniciar sesión</a></li>
+        <li><a href="participante.html" aria-current="page">Mi agenda</a></li>
+        <li><a href="admin.html">Administración</a></li>
+      </ul>
+    </nav>
+
+
+    <div class="sesion">
+      <span id="nombre-usuario"></span>
+      <button type="button" id="btn-salir">Cerrar sesión</button>
+    </div>
+  
+</header>
+
+  <main>
+
+    <section id="saludo">
+      <h1>Mi agenda</h1>
+      <p>Aquí puedes ver tus inscripciones y gestionarlas.</p>
+    </section>
+
+
+
+    <section id="resumen" aria-label="Resumen de inscripciones">
+    </section>
+
+    <nav id="pestanas" role="tablist" aria-label="Filtro de inscripciones">
+
+      <button role="tab" id="tab-activas" aria-selected="true" aria-controls="panel-activas" type="button">
+        Activas
+      </button>
+
+      <button role="tab" id="tab-historial" aria-selected="false" aria-controls="panel-historial" type="button">
+        Historial
+      </button>
+
+    </nav>
+
+
+    <section id="panel-activas" role="tabpanel" aria-labelledby="tab-activas">
+
+
+      <ul id="lista-activas">
+      </ul>
+
+
+      <div id="vacio-activas" hidden>
+        <h3>No tienes inscripciones activas</h3>
+        <p>Explora los eventos disponibles para reservar tu cupo.</p>
+        <a href="index.html">Ver eventos</a>
+      </div>
+
+    </section>
+
+
+    <section id="panel-historial" role="tabpanel" aria-labelledby="tab-historial" hidden>
+
+      <ul id="lista-historial">
+      </ul>
+
+
+      <div id="vacio-historial" hidden>
+        <h3>Aún no tienes historial</h3>
+        <p>Tus eventos pasados aparecerán aquí.</p>
+      </div>
+    </section>
+
+  </main>
+
+
+
+  <dialog id="dialogo-cancelar">
+
+    <h3>Cancelar inscripción</h3>
+    <p id="dialogo-mensaje">Se liberará tu cupo y no podrás deshacer esta acción.</p>
+    
+    <div class="dialogo-acciones">
+      <button type="button" id="btn-mantener">Mantener</button>
+      <button type="button" id="btn-confirmar-cancelar">Cancelar inscripción</button>
+    </div>
+
+  </dialog>
+
+
+
+  <footer>
+    <p>Sistema de Gestión de Eventos Académicos - UNIAJC</p>
+  </footer>
+
+  <script src="js/participante.js"></script>
+</body>
+</html>
