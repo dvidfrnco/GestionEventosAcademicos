@@ -1,0 +1,105 @@
+#saludo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--espacio-lg);
+  flex-wrap: wrap;
+  padding-bottom: var(--espacio-lg);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+#saludo p {
+  margin-bottom: 0;
+}
+
+#resumen {
+  display: flex;
+  gap: var(--espacio-xl);
+  margin-top: var(--espacio-md);
+}
+
+#resumen .indicador .valor {
+  font-size: var(--texto-lg);
+}
+
+#lista-activas > li,
+#lista-historial > li {
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.fecha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  padding: var(--espacio-sm) var(--espacio-md);
+  border-right: 1px solid var(--color-borde);
+  font-family: var(--fuente-datos);
+  color: var(--color-primario);
+}
+
+.fecha .dia {
+  font-size: var(--texto-lg);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.fecha .mes {
+  font-size: var(--texto-xs);
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+}
+
+.detalle {
+  flex: 1;
+}
+
+.meta {
+  font-size: var(--texto-sm);
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espacio-xs);
+}
+
+
+
+
+
+.inscripcion[data-estado="ACTIVA"] {
+  border-left-color: var(--color-primario);
+}
+
+.inscripcion[data-estado="CANCELADA"] {
+  border-left-color: var(--color-peligro);
+  opacity: 0.75;
+}
+
+.inscripcion[data-estado="ASISTIO"] {
+  border-left-color: var(--color-exito);
+}
+
+.inscripcion[data-estado="NO_ASISTIO"] {
+  border-left-color: var(--color-texto-suave);
+  opacity: 0.85;
+}
+
+.estado[data-estado="ACTIVA"] {
+  color: var(--color-informativo);
+  background-color: var(--color-informativo-fondo);
+}
+
+.estado[data-estado="CANCELADA"] {
+  color: var(--color-peligro);
+  background-color: var(--color-peligro-fondo);
+}
+
+.estado[data-estado="ASISTIO"] {
+  color: var(--color-exito);
+  background-color: var(--color-exito-fondo);
+}
+
+.estado[data-estado="NO_ASISTIO"] {
+  color: var(--color-texto-suave);
+  background-color: var(--color-fondo);
+}
