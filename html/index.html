@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos - Sistema de Gestión de Eventos Académicos</title>
+  <link rel="stylesheet" href="css/global.css">
+</head>
+
+
+<body>
+
+  <header>
+    <div class="marca">
+      <span>Sistema de Eventos Académicos</span>
+    </div>
+
+    <nav aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Eventos</a></li>
+        <li><a href="login.html">Iniciar sesión</a></li>
+        <li><a href="participante.html">Mi agenda</a></li>
+        <li><a href="admin.html">Administración</a></li>
+      </ul>
+    </nav>
+
+    <div class="sesion">
+      <span id="nombre-usuario"></span>
+      <button type="button" id="btn-salir">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="presentacion">
+      <h1>Eventos académicos</h1>
+      <p>Consulta las actividades publicadas por la institución.</p>
+    </section>
+
+    <section id="catalogo">
+
+      <form id="form-filtros">
+
+        <div class="campo">
+          <label for="filtro-texto">Buscar</label>
+          <input type="search" id="filtro-texto" name="texto" placeholder="Nombre del evento">
+        </div>
+
+        <div class="campo">
+          <label for="filtro-categoria">Categoría</label>
+          <select id="filtro-categoria" name="categoria">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtro-modalidad">Modalidad</label>
+          <select id="filtro-modalidad" name="modalidad">
+            <option value="">Todas</option>
+            <option value="PRESENCIAL">Presencial</option>
+            <option value="VIRTUAL">Virtual</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtro-fecha">Fecha</label>
+          <input type="date" id="filtro-fecha" name="fecha">
+        </div>
+
+        <button type="submit">Filtrar</button>
+        <button type="reset" id="btn-limpiar-filtros">Limpiar</button>
+      </form>
+
+      <ul id="lista-eventos">
+      </ul>
+
+
+
+      <div id="catalogo-vacio" hidden>
+        <h3>No se encontraron eventos</h3>
+        <p>Intenta con otros filtros de búsqueda.</p>
+      </div>
+
+
+
+      <nav id="paginacion" aria-label="Paginación de eventos">
+        <button type="button" id="btn-pagina-anterior">Anterior</button>
+        <span id="pagina-actual"></span>
+        <button type="button" id="btn-pagina-siguiente">Siguiente</button>
+      </nav>
+
+    </section>
+
+    <section id="detalle-evento" hidden>
+
+      <button type="button" id="btn-cerrar-detalle">Volver al catálogo</button>
+
+      <article>
+        <h2 id="detalle-titulo"></h2>
+
+        <span id="detalle-categoria" class="categoria"></span>
+
+        <p id="detalle-descripcion"></p>
+
+        <dl id="detalle-datos">
+          <dt>Fecha</dt>
+          <dd id="detalle-fecha"></dd>
+
+          <dt>Horario</dt>
+          <dd id="detalle-horario"></dd>
+
+          <dt>Modalidad</dt>
+          <dd id="detalle-modalidad"></dd>
+
+          <dt>Lugar</dt>
+          <dd id="detalle-lugar"></dd>
+
+          <dt>Cupos disponibles</dt>
+          <dd id="detalle-cupos"></dd>
+
+          <dt>Organizador</dt>
+          <dd id="detalle-organizador"></dd>
+        </dl>
+
+        <p id="detalle-mensaje" role="alert" hidden></p>
+
+        <button type="button" id="btn-inscribirse">Inscribirme</button>
+      </article>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>Sistema de Gestión de Eventos Académicos - UNIAJC</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
