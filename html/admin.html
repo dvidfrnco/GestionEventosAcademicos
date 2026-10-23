@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración - Sistema de Gestión de Eventos Académicos</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+
+
+  <header>
+    <div class="marca">
+      <span>Sistema de Eventos Académicos</span>
+    </div>
+
+    <nav aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html">Eventos</a></li>
+        <li><a href="login.html">Iniciar sesión</a></li>
+        <li><a href="participante.html">Mi agenda</a></li>
+        <li><a href="admin.html" aria-current="page">Administración</a></li>
+      </ul>
+    </nav>
+
+    <div class="sesion">
+      <span id="nombre-usuario"></span>
+      <button type="button" id="btn-salir">Cerrar sesión</button>
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+
+    <section id="presentacion">
+      <h1>Administración</h1>
+      <p>Gestiona eventos, categorías, usuarios, asistencia y reportes.</p>
+    </section>
+
+
+    <nav id="pestanas-admin" role="tablist" aria-label="Secciones de administración">
+
+      <button role="tab" id="tab-eventos" aria-selected="true" aria-controls="panel-eventos" type="button">
+        Eventos
+      </button>
+
+      <button role="tab" id="tab-categorias" aria-selected="false" aria-controls="panel-categorias" type="button">
+        Categorías
+      </button>
+
+      <button role="tab" id="tab-usuarios" aria-selected="false" aria-controls="panel-usuarios" type="button">
+        Usuarios
+      </button>
+
+      <button role="tab" id="tab-asistencia" aria-selected="false" aria-controls="panel-asistencia" type="button">
+        Asistencia
+      </button>
+
+      <button role="tab" id="tab-reportes" aria-selected="false" aria-controls="panel-reportes" type="button">
+        Reportes
+      </button>
+
+    </nav>
+
+
+
+
+    <section id="panel-eventos" role="tabpanel" aria-labelledby="tab-eventos">
+
+    <button type="button" id="btn-nuevo-evento">Crear evento</button>
+
+
+    <table id="tabla-eventos">
+
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Fecha</th>
+            <th>Modalidad</th>
+            <th>Cupo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody id="cuerpo-tabla-eventos">
+        </tbody>
+      
+    </table>
+
+      
+
+    <dialog id="dialogo-evento">
+        <form id="form-evento" novalidate>
+          <h3 id="dialogo-evento-titulo">Crear evento</h3>
+
+          <div class="campo">
+            <label for="evento-titulo">Título</label>
+            <input type="text" id="evento-titulo" name="titulo" required>
+          </div>
+
+          <div class="campo">
+            <label for="evento-descripcion">Descripción</label>
+            <textarea id="evento-descripcion" name="descripcion" required></textarea>
+          </div>
+
+          <div class="campo">
+            <label for="evento-categoria">Categoría</label>
+            <select id="evento-categoria" name="categoria" required>
+              <option value="">Selecciona una categoría</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="evento-modalidad">Modalidad</label>
+            <select id="evento-modalidad" name="modalidad" required>
+              <option value="PRESENCIAL">Presencial</option>
+              <option value="VIRTUAL">Virtual</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="evento-fecha">Fecha</label>
+            <input type="date" id="evento-fecha" name="fecha" required>
+          </div>
+
+          <div class="campo">
+            <label for="evento-hora-inicio">Hora de inicio</label>
+            <input type="time" id="evento-hora-inicio" name="horaInicio" required>
+          </div>
+
+          <div class="campo">
+            <label for="evento-hora-fin">Hora de fin</label>
+            <input type="time" id="evento-hora-fin" name="horaFin" required>
+          </div>
+
+          <div class="campo">
+            <label for="evento-ubicacion">Lugar o enlace</label>
+            <input type="text" id="evento-ubicacion" name="ubicacion" required>
+          </div>
+
+          <div class="campo">
+            <label for="evento-cupo">Cupo máximo</label>
+            <input type="number" id="evento-cupo" name="cupo" min="1" required>
+          </div>
+
+
+
+          <p id="mensaje-error-evento" role="alert" hidden></p>
+
+          
+          <div class="dialogo-acciones">
+            <button type="button" id="btn-cancelar-form-evento">Cancelar</button>
+            <button type="submit">Guardar</button>
+          </div>
+
+        </form>
+
+    </dialog>
+
+
+
+
+    <dialog id="dialogo-cancelar-evento">
+        <h3>Cancelar evento</h3>
+
+        <form id="form-cancelar-evento" novalidate>
+          
+            <div class="campo">
+            <label for="motivo-cancelacion">Motivo de la cancelación</label>
+            <textarea id="motivo-cancelacion" name="motivo" required></textarea>
+          </div>
+
+          <div class="dialogo-acciones">
+            <button type="button" id="btn-mantener-evento">No cancelar</button>
+            <button type="submit">Confirmar cancelación</button>
+          </div>
+        
+        </form>
+
+    </dialog>
+
+    </section>
+
+
+
+
+
+    <section id="panel-categorias" role="tabpanel" aria-labelledby="tab-categorias" hidden>
+
+      <form id="form-categoria" novalidate>
+
+        <div class="campo">
+          <label for="categoria-nombre">Nueva categoría</label>
+          <input type="text" id="categoria-nombre" name="nombre" required>
+        </div>
+
+        <button type="submit">Agregar</button>
+
+      </form>
+
+      <table id="tabla-categorias">
+
+        <thead>
+
+          <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+
+        </thead>
+
+        <tbody id="cuerpo-tabla-categorias">
+        </tbody>
+
+      </table>
+
+
+    </section>
+
+
+
+
+    
+    <section id="panel-usuarios" role="tabpanel" aria-labelledby="tab-usuarios" hidden>
+
+      <form id="form-filtro-usuarios">
+
+        <div class="campo">
+          <label for="usuarios-buscar">Buscar</label>
+          <input type="search" id="usuarios-buscar" name="texto" placeholder="Nombre o correo">
+        </div>
+
+        <div class="campo">
+          
+            <label for="usuarios-rol">Rol</label>
+          <select id="usuarios-rol" name="rol">
+            <option value="">Todos</option>
+            <option value="ADMINISTRADOR">Administrador</option>
+            <option value="ORGANIZADOR">Organizador</option>
+            <option value="PARTICIPANTE">Participante</option>
+          </select>
+
+        </div>
+
+        <button type="submit">Buscar</button>
+
+      </form>
+
+
+      <table id="tabla-usuarios">
+
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody id="cuerpo-tabla-usuarios">
+        </tbody>
+
+      </table>
+
+    </section>
+
+
+
+
+
+    <section id="panel-asistencia" role="tabpanel" aria-labelledby="tab-asistencia" hidden>
+
+      <div class="campo">
+        <label for="asistencia-evento">Selecciona un evento</label>
+        <select id="asistencia-evento" name="evento">
+          <option value="">Selecciona un evento</option>
+        </select>
+      </div>
+
+      <table id="tabla-inscritos">
+        <thead>
+          <tr>
+            <th>Participante</th>
+            <th>Correo</th>
+            <th>Estado de inscripción</th>
+            <th>Asistencia</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo-tabla-inscritos">
+        </tbody>
+      </table>
+
+    </section>
+
+
+    <section id="panel-reportes" role="tabpanel" aria-labelledby="tab-reportes" hidden>
+
+      <div class="campo">
+        <label for="reportes-evento">Evento</label>
+        <select id="reportes-evento" name="evento">
+          <option value="">Todos los eventos</option>
+        </select>
+      </div>
+
+
+
+      <div id="indicadores">
+
+        <div class="indicador">
+          <span class="valor" id="indicador-inscritos"></span>
+          <span class="etiqueta">Inscritos</span>
+        </div>
+
+        <div class="indicador">
+          <span class="valor" id="indicador-cupos-disponibles"></span>
+          <span class="etiqueta">Cupos disponibles</span>
+        </div>
+
+        <div class="indicador">
+          <span class="valor" id="indicador-ocupacion"></span>
+          <span class="etiqueta">Porcentaje de ocupación</span>
+        </div>
+
+        <div class="indicador">
+          <span class="valor" id="indicador-asistencia"></span>
+          <span class="etiqueta">Asistencia</span>
+        </div>
+
+      </div>
+
+  
+
+      <table id="tabla-auditoria">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Acción</th>
+            <th>Entidad</th>
+          </tr>
+        </thead>
+
+        <tbody id="cuerpo-tabla-auditoria">
+        </tbody>
+      </table>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>Sistema de Gestión de Eventos Académicos - UNIAJC</p>
+  </footer>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
