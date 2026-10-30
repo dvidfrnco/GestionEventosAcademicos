@@ -1,0 +1,93 @@
+#presentacion {
+  padding-bottom: var(--espacio-lg);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+#panel-eventos #btn-nuevo-evento {
+  margin-bottom: var(--espacio-lg);
+}
+
+#tabla-eventos td:last-child,
+#tabla-inscritos td:last-child {
+  display: flex;
+  gap: var(--espacio-sm);
+  flex-wrap: wrap;
+}
+
+
+dialog#dialogo-evento {
+  max-width: 640px;
+}
+
+dialog#dialogo-evento form#form-evento {
+  max-width: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-md);
+}
+
+
+
+#evento-titulo,
+#evento-descripcion,
+#evento-ubicacion {
+  grid-column: 1 / -1;
+}
+
+dialog#dialogo-evento .campo:has(#evento-titulo),
+dialog#dialogo-evento .campo:has(#evento-descripcion),
+dialog#dialogo-evento .campo:has(#evento-ubicacion) {
+  grid-column: 1 / -1;
+}
+
+dialog#dialogo-evento #mensaje-error-evento,
+dialog#dialogo-evento .dialogo-acciones {
+  grid-column: 1 / -1;
+}
+
+
+#form-categoria {
+  flex-direction: row;
+  align-items: flex-end;
+  max-width: none;
+  margin-bottom: var(--espacio-lg);
+}
+
+#tabla-categorias td:last-child {
+  display: flex;
+  gap: var(--espacio-sm);
+}
+
+
+#form-filtro-usuarios {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  max-width: none;
+  margin-bottom: var(--espacio-lg);
+}
+
+#form-filtro-usuarios .campo {
+  flex: 1 1 180px;
+}
+
+#tabla-usuarios td:last-child {
+  display: flex;
+  gap: var(--espacio-sm);
+}
+
+
+#panel-asistencia > .campo {
+  max-width: 360px;
+  margin-bottom: var(--espacio-lg);
+}
+
+
+#panel-reportes > .campo {
+  max-width: 360px;
+  margin-bottom: var(--espacio-lg);
+}
+
+#tabla-auditoria {
+  margin-top: var(--espacio-xl);
+}
