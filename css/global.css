@@ -1,8 +1,8 @@
 :root {
 
-  --color-primario: #16233d;      
+  --color-primario: #16233d;
   --color-primario-claro: #2d3f61;
-  --color-acento: #ad8a4b;    
+  --color-acento: #ad8a4b;
   --color-acento-fondo: #f1e8d6;
 
   --color-fondo: #f6f4ee;
@@ -475,11 +475,80 @@ dialog::backdrop {
   margin-top: var(--espacio-lg);
 }
 
-
 footer {
   text-align: center;
   padding: var(--espacio-lg);
   border-top: 1px solid var(--color-borde);
   color: var(--color-texto-suave);
   font-size: var(--texto-xs);
+}
+
+
+[role="status"] {
+  background-color: var(--color-exito-fondo);
+  color: var(--color-exito);
+  padding: var(--espacio-sm) var(--espacio-md);
+  border-radius: var(--radio-borde);
+  font-size: var(--texto-sm);
+}
+
+.insignia-rol {
+  display: inline-block;
+  font-size: var(--texto-xs);
+  font-weight: 600;
+  padding: 2px var(--espacio-sm);
+  border-radius: var(--radio-borde-circular);
+  background-color: var(--color-acento-fondo);
+  color: var(--color-acento);
+  margin-left: var(--espacio-xs);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.estado[data-estado="BORRADOR"] {
+  background-color: var(--color-advertencia-fondo);
+  color: var(--color-advertencia);
+}
+
+.estado[data-estado="PUBLICADO"] {
+  background-color: var(--color-exito-fondo);
+  color: var(--color-exito);
+}
+
+.estado[data-estado="CERRADO"] {
+  background-color: var(--color-advertencia-fondo);
+  color: var(--color-advertencia);
+}
+
+.estado[data-estado="CANCELADO"] {
+  background-color: var(--color-peligro-fondo);
+  color: var(--color-peligro);
+}
+
+.estado[data-estado="FINALIZADO"] {
+  background-color: var(--color-fondo);
+  color: var(--color-texto-suave);
+}
+
+.cupos-agotados {
+  color: var(--color-peligro);
+  font-weight: 600;
+}
+
+.texto-ayuda {
+  font-size: var(--texto-xs);
+  color: var(--color-texto-suave);
+  margin-top: calc(var(--espacio-xs) * -1);
+  margin-bottom: var(--espacio-sm);
+}
+
+.mensaje-exito {
+  background-color: var(--color-exito-fondo) !important;
+  color: var(--color-exito) !important;
 }
